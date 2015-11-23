@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>COUNTDOWN</title>
+</head>
+<body>
+	
+	<div class="date"></div>
+
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script>
+	
+	var later = new Date("2015-11-11 11:16:30");
+
+	function setIntervalo(){
+		var now = new Date(),
+		hours = "00",
+		minutes = "00",
+		seconds = "00",
+		t = later - now;
+		
+		if(t > 0){
+			seconds = Math.floor( (t/1000) % 60 );
+			minutes = Math.floor( (t/1000/60) % 60 );
+			hours = Math.floor( (t/1000/60/60) % 24 );
+
+			seconds = seconds < 10 ? "0" + seconds : seconds; 
+			minutes = minutes < 10 ? "0" + minutes : minutes; 
+			hours = hours < 10 ? "0" + hours : hours; 
+		}
+
+		$('.date').html(hours +' : '+ minutes +' : '+ seconds);		
+
+		setTimeout(function(){
+			if((seconds * 1) > 0){
+				setIntervalo();
+			}else{
+				alert("ENDS !!");
+			}
+		}, 1000);
+	}
+
+
+	setIntervalo();
+		
+
+	
+	
+
+	
+
+
+
+
+</script>
+
+</body>
+</html>
